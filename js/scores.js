@@ -4,6 +4,14 @@ function printHighscores() {
     highscores.sort(function (a, b) {
       return b.score - a.score;
     });
+  
+    for (var i = 0; i < highscores.length; i += 1) {
+    var liTag = document.createElement('li');
+    liTag.textContent = highscores[i].initials + ' - ' + highscores[i].score;
+
+    var olEl = document.getElementById('highscores');
+    olEl.appendChild(liTag);
+  }
 }
 
 
@@ -12,3 +20,7 @@ function printHighscores() {
         window.localStorage.removeItem('highscores');
         window.location.reload();
       }
+
+      document.getElementsById('cler').onclick=clearhighscores;
+
+      printHighscores();
